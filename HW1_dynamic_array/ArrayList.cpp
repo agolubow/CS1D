@@ -32,7 +32,7 @@ int main(){
 	std::cout << std::endl << "ARRAY TWO INFO: ";
 	array_two.print();
 
-	array_three = std::move(array_two);
+	array_three = std::move(array_two); //used std::move() in order to explicitly invoke move assignment
 
 	std::cout << std::endl << "ARRAY TWO AFTER MOVE ASSIGNMENT TO ARRAY THREE INFO: ";
 	array_two.print();
@@ -40,7 +40,7 @@ int main(){
 	std::cout << std::endl << "ARRAY THREE INFO: ";
 	array_three.print();
 
-	ArrayList<int> array_four = std::move(array_three);
+	ArrayList<int> array_four = std::move(array_three); //used std::move() in order to explicitly invoke move constructor
 
 	std::cout << std::endl << "ARRAY THREE AFTER MOVE CONSTRUCTION OF ARRAY FOUR INFO: ";
 	array_three.print();
