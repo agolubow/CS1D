@@ -1,3 +1,17 @@
+/************************************************************************************************
+
+ArrayList.cpp: hw1 homework assignment 
+
+Author: Alexander Golubow
+
+Purpose: The purpose of the assignment is to review the rule of the big five and to practice
+		 accounting for time and space complexity
+
+modifications:
+8/29/2018 initial version
+
+*************************************************************************************************/
+
 #include "ArrayList.h"
 
 int main(){

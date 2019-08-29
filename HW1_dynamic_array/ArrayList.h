@@ -30,14 +30,14 @@ private:
 };
 
 template <class Type>
-ArrayList<Type>::ArrayList(){ //default constructor
+ArrayList<Type>::ArrayList(){ //default constructor [TIME is O(3), SPACE is 4+4+(size of address)+(INITIAL_SIZE * sizeof(TYPE))]
 	sizeOfArray = 0;
 	capacity = INITIAL_SIZE;
 	Array_List = new Type[INITIAL_SIZE];
 }
 
 template <class Type>
-ArrayList<Type>::ArrayList(const ArrayList<Type>& other){ //overloaded copy constructor
+ArrayList<Type>::ArrayList(const ArrayList<Type>& other){ //overloaded copy constructor [TIME is O(sizeOfArray*4) + 5, SPACE is 4+4+(size of address)+(capacity * sizeof(TYPE))]
 	sizeOfArray = other.size();
 	capacity = other.getCapacity();
 	Array_List = new Type[other.getCapacity()];
@@ -48,7 +48,7 @@ ArrayList<Type>::ArrayList(const ArrayList<Type>& other){ //overloaded copy cons
 }
 
 template <class Type>
-ArrayList<Type>::ArrayList(ArrayList<Type>&& other){ //overloaded move constructor
+ArrayList<Type>::ArrayList(ArrayList<Type>&& other){ //overloaded move constructor [TIME is O(7), SPACE is 8+(size of address)]
 	sizeOfArray = other.size();
 	capacity = other.getCapacity();
 	Array_List = other.getArrayPointer();
@@ -59,7 +59,7 @@ ArrayList<Type>::ArrayList(ArrayList<Type>&& other){ //overloaded move construct
 }
 
 template <class Type>
-const ArrayList<Type>& ArrayList<Type>::operator=(const ArrayList<Type>& other){ //overloaded copy assignment operator
+const ArrayList<Type>& ArrayList<Type>::operator=(const ArrayList<Type>& other){ //overloaded copy assignment operator [TIME is 8 + O(N), SPACE is 4+4+(size of address)+(capacity * sizeof(TYPE))]
 	sizeOfArray = other.size();
 	capacity = other.getCapacity();
 	Type*temp = new Type[other.getCapacity()];
@@ -73,7 +73,7 @@ const ArrayList<Type>& ArrayList<Type>::operator=(const ArrayList<Type>& other){
 }
 
 template <class Type>
-ArrayList<Type>& ArrayList<Type>::operator=(ArrayList<Type>&& other){ //overloaded move assignment operator
+ArrayList<Type>& ArrayList<Type>::operator=(ArrayList<Type>&& other){ //overloaded move assignment operator [TIME is O(10), SPACE is 8+(size of address)]
     if(this != &other){
         delete [] Array_List;		
         Array_List = other.getArrayPointer();
@@ -88,45 +88,45 @@ ArrayList<Type>& ArrayList<Type>::operator=(ArrayList<Type>&& other){ //overload
 }
 
 template <class Type>
-ArrayList<Type>::~ArrayList(){ //destructor
+ArrayList<Type>::~ArrayList(){ //destructor [TIME is O(N), SPACE is -(sizeof(Type) * sizeOfArray)]
 	delete [] Array_List;
 }
 
 /* ----GETTER FUNCTIONS---- */
 template <class Type>
-int ArrayList<Type>::size() const{
+int ArrayList<Type>::size() const{ // [TIME is O(1), SPACE is 4]
 	return sizeOfArray;
 }
 
 template <class Type>
-int ArrayList<Type>::getCapacity() const{
+int ArrayList<Type>::getCapacity() const{ // [TIME is O(1), SPACE is 4]
 	return capacity;
 }
 
 template <class Type>
-Type * ArrayList<Type>::getArrayPointer() const{
+Type * ArrayList<Type>::getArrayPointer() const{ // [TIME is O(1), SPACE is (size of address)]
 	return Array_List;
 }
 
 /* ----SETTER FUNCTIONS---- */
 template <class Type>
-void ArrayList<Type>::setSize(int size){
+void ArrayList<Type>::setSize(int size){ // [TIME is O(1), SPACE is 4]
 	sizeOfArray = size;
 }
 
 template <class Type>
-void ArrayList<Type>::setCapacity(int capacity){
+void ArrayList<Type>::setCapacity(int capacity){ // [TIME is O(1), SPACE is 4]
 	this->capacity = capacity;
 }
 
 template <class Type>
-void ArrayList<Type>::setNullPtr(){
+void ArrayList<Type>::setNullPtr(){ // [TIME is O(1), SPACE is ?]
 	Array_List = nullptr;
 }
 
 /* ----OTHER FUNCTIONS---- */
 template <class Type>
-void ArrayList<Type>::insertItem(const Type& item){ //add item to array list
+void ArrayList<Type>::insertItem(const Type& item){ //add item to array list [TIME is 9 + O(N), SPACE is 0]
 	if(sizeOfArray < capacity){
 		Array_List[sizeOfArray] = item;
 		++sizeOfArray;
